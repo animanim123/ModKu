@@ -2,6 +2,7 @@ import React from "react";
 import { useEffect, useState } from "react";
 import supabase from "../supabase.js";
 import { Link } from "react-router-dom";
+import Ad300x250 from "../components/ad300x250.jsx";
 
 const App = () => {
   const [read, setRead] = useState([]);
@@ -34,6 +35,8 @@ const App = () => {
             </div>
           </div>
         </nav>
+
+        <Ad300x250 />
 
         <h1 className="text-xl font-semibold mb-2 px-4 pt-7 gap-2 flex items-center">
           <i className="fas fa-bell text-md"></i>
