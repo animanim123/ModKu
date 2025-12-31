@@ -1,0 +1,16 @@
+/* HILANGKAN SCROLLBAR TAPI TETAP BISA SCROLL */
+
+/* Chrome, Edge, Safari */
+.hide-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+
+/* Firefox */
+.hide-scrollbar {
+  scrollbar-width: none;
+}
+
+/* IE / Edge lama */
+.hide-scrollbar {
+  -ms-overflow-style: none;
+}
