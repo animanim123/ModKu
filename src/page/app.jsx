@@ -40,7 +40,7 @@ const App = () => {
 
         <h1 className="text-xl font-semibold mb-2 px-4 pt-7 gap-2 flex items-center">
           <i className="fas fa-bell text-md"></i>
-          Aplikasi Mod Terbaru
+          Aplikasi Mod New
         </h1>
 
         <div className="px-4 pb-4 space-y-3">
