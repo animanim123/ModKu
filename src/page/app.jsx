@@ -12,7 +12,7 @@ const App = () => {
   }, []);
 
   const getData = async () => {
-    const { data, error } = await supabase.from("apkcuy").select("*");
+    const { data, error } = await supabase.from("apkcuy").select("*").order("id", {ascending: false});
 
     if (error) {
       console.error("error cuy", error.message);
