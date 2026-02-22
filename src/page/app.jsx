@@ -6,21 +6,34 @@ import Ad300x250 from "../components/ad300x250.jsx";
 
 const App = () => {
   const [read, setRead] = useState([]);
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     getData();
   }, []);
 
   const getData = async () => {
-    const { data, error } = await supabase.from("apkcuy").select("*").order("id", {ascending: false});
+    try {
+      const { data, error } = await supabase.from("apkcuy").select("*").order("id", { ascending: false });
 
-    if (error) {
-      console.error("error cuy", error.message);
-    } else {
-      console.log("berhasil cuy");
       setRead(data);
+    } catch (error) {
+      console.error("error cuy", error.message);
+    } finally {
+      setLoading(false);
     }
   };
+
+  if (loading) {
+    return (
+      <div className="fixed inset-0 bg-white flex items-center justify-center flex-col">
+        <div className="">
+          <img src="https://i.imgur.com/K7N9rKC.jpeg" alt="Loading" className="w-70 rounded-sm" />
+        </div>
+        <h1 className="text-2xl">Loading....</h1>
+      </div>
+    )
+  }
 
   return (
     <>
