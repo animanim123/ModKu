@@ -2,7 +2,6 @@ import React from "react";
 import { useEffect, useState } from "react";
 import supabase from "../supabase.js";
 import { Link } from "react-router-dom";
-import Ad300x250 from "../components/ad300x250.jsx";
 
 const App = () => {
   const [read, setRead] = useState([]);
@@ -14,8 +13,20 @@ const App = () => {
 
   const getData = async () => {
     try {
-      const { data, error } = await supabase.from("apkcuy").select("*").order("id", { ascending: false });
-
+      const { data, error } = await supabase
+        .from("apkcuy")
+        .select(`
+    id,
+    url,
+    versi,
+    kategori (
+      name,
+      icon,
+      spesifikasi
+    )
+  `)
+        .order("id", { ascending: false });
+      console.log(read);
       setRead(data);
     } catch (error) {
       console.error("error cuy", error.message);
@@ -28,11 +39,15 @@ const App = () => {
     return (
       <div className="fixed inset-0 bg-white flex items-center justify-center flex-col">
         <div className="">
-          <img src="https://i.imgur.com/K7N9rKC.jpeg" alt="Loading" className="w-70 rounded-sm" />
+          <img
+            src="https://i.imgur.com/K7N9rKC.jpeg"
+            alt="Loading"
+            className="w-70 rounded-sm"
+          />
         </div>
         <h1 className="text-2xl">Loading....</h1>
       </div>
-    )
+    );
   }
 
   return (
@@ -49,8 +64,6 @@ const App = () => {
           </div>
         </nav>
 
-        <Ad300x250 />
-
         <h1 className="text-xl font-semibold mb-2 px-4 pt-7 gap-2 flex items-center">
           <i className="fas fa-bell text-md"></i>
           Aplikasi Mod New
@@ -65,15 +78,15 @@ const App = () => {
             >
               {/* ICON */}
               <img
-                src={item.icon}
-                alt={item.name}
+                src={item.kategori?.icon}
+                alt={item.kategori?.name}
                 className="w-14 h-14 rounded-xl object-cover"
               />
 
               {/* INFO */}
               <div className="flex-1">
                 <h2 className="font-semibold text-sm line-clamp-1">
-                  {item.name}
+                  {item.kategori?.name}
                 </h2>
 
                 <p className="text-xs font-semibold mt-0.5 flex items-center gap-1">
@@ -83,7 +96,7 @@ const App = () => {
 
                 <p className="text-xs font-semibold mt-1 flex items-center gap-1 line-clamp-1">
                   <i className="fa-solid fa-screwdriver-wrench text-orange-500"></i>
-                  {item.spesifikasi}
+                  {item.kategori?.spesifikasi}
                 </p>
               </div>
 
