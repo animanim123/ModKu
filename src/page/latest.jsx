@@ -3,30 +3,26 @@ import { GetDatas } from "../lib/getDatas.jsx";
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import Nav from "../components/nav.jsx";
-import RecomendForYou from "../components/recomendForYou.jsx";
-import { IoArrowForward } from "react-icons/io5";
 import NewUpdate from "../components/newUpdate.jsx";
 import Banner from "../components/banner.jsx";
 import Footer from "../components/footer.jsx";
 
-const App = () => {
+const Latest = () => {
   const [read, setRead] = useState([]);
   const [loading, setLoading] = useState(true);
-  const [rekomend, setRekomend] = useState([]);
-  const foryou = useState(true);
+  const latest = useState(true);
 
-  useEffect(() => {
-    getData();
-  }, []);
+  useEffect(()=>{
+    getData()
+  }, [])
 
   const getData = async () => {
     try {
       const data = await GetDatas();
-      const rekomendData = data.filter((item) => item.rekomend);
-      setRekomend(rekomendData);
       setRead(data);
     } catch (error) {
-      console.error("error cuy", error.message);
+      console.log("error cuy", error);
+      setRead([]);
     } finally {
       setLoading(false);
     }
@@ -43,32 +39,15 @@ const App = () => {
   return (
     <>
       <header>
-        <Nav foryou={foryou} />
+        <Nav latest={latest} />
       </header>
-      <main className="px-3 mt-3 flex flex-col gap-5">
-        <section>
-          <Banner />
-        </section>
-        <section className="md:hidden">
-          <div className="flex justify-between items-center">
-            <h1 className="font-semibold text-xl">Recommended for you</h1>
-            <IoArrowForward className="text-2xl" />
-          </div>
-          <div className="my-3 grid grid-cols-3 gap-4">
-            {rekomend.map((item) => (
-              <RecomendForYou key={item.id} item={item} />
-            ))}
-          </div>
-        </section>
-        <section>
+      <main>
+        <section className="mx-3 mt-3">
           <div className="flex justify-between items-center">
             <h1 className="font-semibold text-xl">New Update</h1>
-            <Link to="/latest">
-              <IoArrowForward className="text-2xl" />
-            </Link>
           </div>
           <div className="my-3 space-y-3">
-            {read.slice(0, 10).map((item) => (
+            {read.map((item) => (
               <NewUpdate key={item.id} item={item} />
             ))}
           </div>
@@ -81,4 +60,4 @@ const App = () => {
   );
 };
 
-export default App;
+export default Latest;
