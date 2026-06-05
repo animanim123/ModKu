@@ -9,7 +9,7 @@ const Nav = ({foryou, latest, categories}) => {
       <div className="px-3">
         <div className="flex h-full items-center justify-between py-3">
           <div className="flex justify-center items-center gap-1">
-            <h1 className="text-2xl font-bold text-[#006A39]">ModKu</h1>
+            <a href="/" className="text-2xl font-bold text-[#006A39]">ModKu</a>
           </div>
 
           <div className="flex gap-2">

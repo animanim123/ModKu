@@ -27,15 +27,34 @@ const Footer = () => {
 
               <li>
                 <a href="/" className="hover:text-white transition">
-                  Recommended
+                  For You
                 </a>
               </li>
 
               <li>
-                <a href="/" className="hover:text-white transition">
-                  New Update
+                <a href="/latest" className="hover:text-white transition">
+                  Latest
                 </a>
               </li>
+
+              <li>
+                <a href="/categories" className="hover:text-white transition">
+                  Categories
+                </a>
+              </li>
+
+              <li>
+                <a href="/privacypolicy" className="hover:text-white transition">
+                  Privacy Policy
+                </a>
+              </li>
+
+              <li>
+                <a href="/about" className="hover:text-white transition">
+                  About US
+                </a>
+              </li>
+
             </ul>
           </div>
 
