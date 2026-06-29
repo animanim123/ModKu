@@ -1,16 +1,32 @@
 import React from "react";
+import { Link } from "react-router-dom";
 
-const RecomendForYou = ({item}) => {
+const RecomendForYou = ({ item }) => {
   return (
-    <div key={item.id} className="">
-      <div className="rounded-lg shadow-md border-[0.5px] border-black/50 overflow-hidden w-[100px]">
-        <img src={item.kategori?.icon} alt="" />
+    <Link to={item.url}
+      key={item.id}
+      className="group w-[100px] cursor-pointer transition-all hover:-translate-x-0.5 hover:-translate-y-0.5"
+    >
+      {/* Cover */}
+      <div className="overflow-hidden rounded-xl border-[3px] border-black bg-white shadow-[4px_4px_0_#000]">
+        <img
+          src={item.kategori?.icon}
+          alt={item.kategori?.name}
+          className="aspect-square w-full object-cover transition-transform duration-200 group-hover:scale-105"
+        />
       </div>
-      <div className="">
-        <h1 className="text-black text-md font-medium truncate">{item.kategori?.name}</h1>
-        <p className="text-black/80 text-sm">Versi {item.versi}</p>
+
+      {/* Info */}
+      <div className="mt-2">
+        <h1 className="truncate text-sm font-black">
+          {item.kategori?.name}
+        </h1>
+
+        <div className="mt-1 inline-flex rounded-md border-2 border-black bg-orange-300 px-2 py-0.5 text-[10px] font-extrabold shadow-[2px_2px_0_#000]">
+          v{item.versi}
+        </div>
       </div>
-    </div>
+    </Link>
   );
 };
 
