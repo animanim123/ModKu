@@ -1,4 +1,3 @@
-import React from "react";
 import { GetDatas } from "../lib/getDatas.jsx";
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
@@ -90,7 +89,7 @@ const App = () => {
             </Link>
           </div>
           <div className="my-3 space-y-3">
-            {read.slice(0, 10).map((item) => (
+            {read.slice(0, 5).map((item) => (
               <NewUpdate key={item.id} item={item} />
             ))}
           </div>

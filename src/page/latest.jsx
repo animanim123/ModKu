@@ -1,7 +1,5 @@
-import React from "react";
 import { GetDatas } from "../lib/getDatas.jsx";
 import { useEffect, useState } from "react";
-import { Link } from "react-router-dom";
 import Nav from "../components/nav.jsx";
 import NewUpdate from "../components/newUpdate.jsx";
 import Banner from "../components/banner.jsx";
@@ -60,7 +58,7 @@ const Latest = () => {
             </h1>
           </div>
           <div className="my-3 space-y-3">
-            {read.map((item) => (
+            {read.slice(0, 10).map((item) => (
               <NewUpdate key={item.id} item={item} />
             ))}
           </div>

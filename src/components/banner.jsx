@@ -29,7 +29,7 @@ const Banner = () => {
         </p>
 
         <a
-          href="/latest"
+          href="/categories"
           className="mt-6 rounded-xl border-[3px] border-black bg-orange-300 px-6 py-3 font-black text-black shadow-[4px_4px_0_#000] transition-all hover:-translate-x-0.5 hover:-translate-y-0.5 hover:shadow-[6px_6px_0_#000]"
         >
           Explore Now →

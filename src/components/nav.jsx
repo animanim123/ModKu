@@ -1,8 +1,7 @@
-import React from "react";
 import { IoGiftOutline } from "react-icons/io5";
 import { FaWhatsapp, FaYoutube, FaTiktok } from "react-icons/fa";
 
-const Nav = ({ foryou, latest, categories }) => {
+const Nav = ({ foryou,  categories, leaderboard }) => {
   return (
     <nav className="sticky top-0 z-50 border-b-[3px] border-black bg-white shadow-[0_3px_0_#000]">
       <div className="px-3">
@@ -46,7 +45,7 @@ const Nav = ({ foryou, latest, categories }) => {
             </a>
 
             <a
-              href="https://tako.id/GAZZ_DEV"
+              href="https://tako.id/GAZZ_DEV/gift"
               target="_blank"
               rel="noopener noreferrer"
               className="flex h-9 w-9 items-center justify-center rounded-lg border-[2px] border-black bg-orange-400 text-black shadow-[2px_2px_0_#000] transition-all hover:-translate-y-0.5 hover:shadow-[4px_4px_0_#000]"
@@ -71,7 +70,7 @@ const Nav = ({ foryou, latest, categories }) => {
             </a>
           </li>
 
-          <li>
+          {/* <li>
             <a
               href="/latest"
               className={`flex w-full items-center justify-center rounded-lg border-[3px] border-black px-4 py-2 transition-all ${
@@ -82,7 +81,7 @@ const Nav = ({ foryou, latest, categories }) => {
             >
               Latest
             </a>
-          </li>
+          </li> */}
 
           <li>
             <a
@@ -94,6 +93,18 @@ const Nav = ({ foryou, latest, categories }) => {
               }`}
             >
               Categories
+            </a>
+          </li>
+          <li>
+            <a
+              href="/leaderboard"
+              className={`flex w-full items-center justify-center rounded-lg border-[3px] border-black px-4 py-2 transition-all ${
+                leaderboard
+                  ? "bg-red-300 shadow-[3px_3px_0_#000]"
+                  : "bg-white hover:bg-red-100"
+              }`}
+            >
+              Leaderboard
             </a>
           </li>
         </ul>

@@ -1,10 +1,7 @@
-import React from "react";
 import { GetDatas } from "../lib/getDatas.jsx";
 import { useEffect, useState } from "react";
-import { Link } from "react-router-dom";
 import Nav from "../components/nav.jsx";
 import NewUpdate from "../components/newUpdate.jsx";
-import Banner from "../components/banner.jsx";
 import Footer from "../components/footer.jsx";
 
 const Categories = () => {
@@ -34,7 +31,9 @@ const Categories = () => {
       acc[categoryName] = [];
     }
 
-    acc[categoryName].push(item);
+    if (acc[categoryName].length < 3) {
+      acc[categoryName].push(item);
+    }
 
     return acc;
   }, {});
